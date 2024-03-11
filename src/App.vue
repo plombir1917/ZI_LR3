@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Лабораторная работа №3. Киселев Арсений. RSA АЛГОРИТМ</h1>
+    <h1>RSA АЛГОРИТМ</h1>
     <div class="main">
       <div class="encrypt">
         <input
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { gcd } from "mathjs";
+import { gcd } from 'mathjs';
 
 const SimpleNumbers = [
   2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
@@ -52,13 +52,13 @@ const SimpleNumbers = [
 export default {
   data() {
     return {
-      m: "",
-      e: "",
-      n: "",
-      m1: "",
-      d: "",
-      encryptedMessage: "",
-      decryptedMessage: "",
+      m: '',
+      e: '',
+      n: '',
+      m1: '',
+      d: '',
+      encryptedMessage: '',
+      decryptedMessage: '',
     };
   },
 
@@ -106,18 +106,18 @@ export default {
     },
 
     updateEncryptedMessage() {
-      let result1 = "";
+      let result1 = '';
       for (let i = 0; i < this.m.length; i++) {
         let x = BigInt(this.m.charCodeAt(i));
         let result = x ** BigInt(this.e) % BigInt(this.n);
-        result1 += result.toString() + " ";
+        result1 += result.toString() + ' ';
       }
       this.encryptedMessage = result1;
     },
 
     updateDescryptedMessage() {
-      let result2 = "";
-      let res = this.encryptedMessage.split(" ");
+      let result2 = '';
+      let res = this.encryptedMessage.split(' ');
       for (let i = 0; i < res.length; i++) {
         let result = BigInt(res[i]) ** BigInt(this.d) % BigInt(this.n);
         result2 += String.fromCharCode(Number(result));
